@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{A6A440FB-A932-4989-BDAA-97DBD31AD885}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ps-globomantics-webapi-react-AuthCookie", "ps-globomantics-webapi-react-AuthCookie", "{18D4C95B-0FE9-4607-964D-D2EF5CA7BED4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "ps-globomantics-webapi-react-AuthCookie\Api\Api.csproj", "{25B6A092-C70F-450D-94A1-EA6D9324CFB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6A440FB-A932-4989-BDAA-97DBD31AD885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6A440FB-A932-4989-BDAA-97DBD31AD885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6A440FB-A932-4989-BDAA-97DBD31AD885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6A440FB-A932-4989-BDAA-97DBD31AD885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25B6A092-C70F-450D-94A1-EA6D9324CFB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25B6A092-C70F-450D-94A1-EA6D9324CFB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25B6A092-C70F-450D-94A1-EA6D9324CFB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25B6A092-C70F-450D-94A1-EA6D9324CFB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{25B6A092-C70F-450D-94A1-EA6D9324CFB3} = {18D4C95B-0FE9-4607-964D-D2EF5CA7BED4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {970C9C85-CEB7-404C-8527-935D0447071A}
+	EndGlobalSection
+EndGlobal

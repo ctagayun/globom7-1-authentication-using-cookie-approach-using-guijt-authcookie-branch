@@ -1,0 +1,48 @@
+Module 7: Authentication and Deployment
+
+  - Deployment React Project
+      - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/f2de7518-23c4-4576-8877-2169ea14ab86
+    
+      - first do a production build in React:
+            npm run buld --> creates "dist" folder
+    
+      - dist/index-Z8cH2rkp - contains all javscript files of entire application
+
+    
+
+  - Deployment API
+     https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/f2de7518-23c4-4576-8877-2169ea14ab86
+    
+     - do dotnet publish --> will create a Api/bin/Release. Contains many files,
+       take note of Api.dll, Api.exe, Api.pdb
+
+    - the ap can be started from .bin\release\net8.0
+        -  cd .\bin\Release\net8.0\
+        - dotnet api.dll
+        - dotnet api.exe can also be used to start the app
+
+  - Authentication
+     - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/413387b5-b1dd-4ffd-baa0-3ce06fb26081
+
+  
+
+     1. Introduction Cookie Approach
+          - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/a98d4add-cc27-4356-bde1-b252cec75c72
+        
+          - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/e405b0bb-51f8-4add-8058-8cf14e48326b
+
+          - we always need a server-side app that can keep secrets. Heres the concept 
+            of Cookie approach: 
+              1. API serves the static assets of the React production 
+              build and it has session endpoints such as login and logout. The api 
+              is now a backend instead of API is more in order.
+
+              2. it uses SameSite cookies. No cross-site use allowed. Except GET requests.
+
+     2. Hosting React App inside Asp.netcore API project (Cookie approach)
+          - clone this AuthCookie branch of repo https://github.com/rolandguijt/ps-globomantics-webapi-react
+          
+          - Lets see how it is done: https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/e405b0bb-51f8-4add-8058-8cf14e48326b
+
+          - To see how it is done switch to branch AuthCookie
+              - put the output of api production build tp wwwroot folder
