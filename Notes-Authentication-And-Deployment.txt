@@ -45,4 +45,11 @@ Module 7: Authentication and Deployment
           - Lets see how it is done: https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/e405b0bb-51f8-4add-8058-8cf14e48326b
 
           - To see how it is done switch to branch AuthCookie
-              - put the output of api production build tp wwwroot folder
+              - put the output of React project production build to wwwroot folder of Api Project
+
+          - cd api --> dotnet run 
+
+          - the React main page is displayed. Click Login --> and enter the following 
+            in login form that is displayed: 
+                Userid: roland
+                Password: secret
