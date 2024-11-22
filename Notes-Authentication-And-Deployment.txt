@@ -40,16 +40,36 @@ Module 7: Authentication and Deployment
               2. it uses SameSite cookies. No cross-site use allowed. Except GET requests.
 
      2. Hosting React App inside Asp.netcore API project (Cookie approach)
-          - clone this AuthCookie branch of repo https://github.com/rolandguijt/ps-globomantics-webapi-react
+
+          - first clone this AuthCookie branch of repo https://github.com/rolandguijt/ps-globomantics-webapi-react
           
-          - Lets see how it is done: https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/e405b0bb-51f8-4add-8058-8cf14e48326b
+          - then go to:
+              https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/e405b0bb-51f8-4add-8058-8cf14e48326b
 
           - To see how it is done switch to branch AuthCookie
-              - put the output of React project production build to wwwroot folder of Api Project
+              - cd ./API --> create wwwroot folder. 
+
+              - put the output (assets) of React project production build to ./api/wwwroot   
+            
+              - after that open program.cs (see my comments to determine what was changed)
+                (see my comments on wehat was added/deleted)
+
+              - in src/config.ts of react change the URL of the API'
+
+           - next create ReactWeb/publish.ps1. It is a powershell script, to 
+             automate copyin the output of the production build to wwwroot.
 
           - cd api --> dotnet run 
-
           - the React main page is displayed. Click Login --> and enter the following 
             in login form that is displayed: 
                 Userid: roland
                 Password: secret
+
+   
+  - Implementing Cookie Authentication
+     - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/5021002a-0cc6-410e-9f1d-0d92de2ac80d
+
+     - open and modify program.cs 
+         - add builder.services.AddAuthentication  (See commnets in Step 1 and Step2)
+
+     - Step3: create Api/AccountController - create 3 MVC endpoints for session mangement in a new account

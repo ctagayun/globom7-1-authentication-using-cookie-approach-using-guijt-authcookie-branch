@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ConfArch.Web.Controllers
 {
+    //*Create three MVC endpoints for session management in a new account
     public class AccountController : Controller
     {
         private readonly IUserRepository userRepository;
@@ -29,9 +30,11 @@ namespace ConfArch.Web.Controllers
         public async Task<IActionResult> Login(LoginModel model)
         {
             var user = userRepository.GetByUsernameAndPassword(model.Username, model.Password);
+            //*is there a user?
             if (user == null)
                 return Unauthorized();
 
+            //*build a list of claims (in fo about the user)
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
@@ -40,16 +43,22 @@ namespace ConfArch.Web.Controllers
                 new Claim("FavoriteColor", user.FavoriteColor)
             };
 
+            //*after creating the claims list I create a ClaimsIdentity object passing it the "claims" object
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
+            var principal = new ClaimsPrincipal(identity); //*Create a claims principal containing the identity
 
+            //*We can then sign in the principal. This line of code actally creates and sets the session
+            //*cookie for us.
+            //*{ IsPersistent = model.RememberLogin <-- THIS makes the cookie survive between browser sessions
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, 
                 new AuthenticationProperties { IsPersistent = model.RememberLogin });
 
+            //*WHen done redirect to the root  which will display the frontpage of the REACTWEB application
             return Redirect("/");
         }
 
-        [Authorize]
+        //*The logout endpoint will delete the cookie
+        [Authorize] //*Authorize means the request to this endpoint must have a valid sesion cookie
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
