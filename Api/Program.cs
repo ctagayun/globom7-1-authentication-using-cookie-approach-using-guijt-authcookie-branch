@@ -20,6 +20,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             return Task.CompletedTask;
         };
     });
+
+//*Step5 declare a policy whic requires a claim with type, role, and a value, admin
 builder.Services.AddAuthorization(o => 
     o.AddPolicy("admin", p => p.RequireClaim("role", "Admin"))
 );
@@ -51,7 +53,7 @@ app.UseAuthentication();
 app.MapHouseEndpoints();
 app.MapBidEndpoints();
 app.UseRouting();
-app.UseAuthorization();
+app.UseAuthorization();  //*Step6: Call authorization middleware
 app.MapDefaultControllerRoute();
 
 //*index.html is the entrypoint of out React application

@@ -5,7 +5,9 @@ import App from "./main/App";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+//*Step1 in enablen cookie authentication in React app
 axios.defaults.withCredentials = true;
+
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

@@ -10,11 +10,16 @@ import useFetchUser from "../hooks/UserHooks";
 import config from "../config";
 
 function App() {
+  //*Step3: Call useFetchUser hook
   const { isSuccess } = useFetchUser();
-  const loginUrl = `${config.baseApiUrl}/account/login`;
+  //* ${config.baseApiUrl} is in ./src/config.ts
+  const loginUrl = `${config.baseApiUrl}/account/login`;  //*located in api/Account
+  //const logoffUrl = `${config.baseApiUrl}/account/Logout`;
+   //*I am assuming i am authenticated. If not display login link to the Login endpoint
   return (
     <BrowserRouter>
       <div className="container">
+       
         {!isSuccess && <a href={loginUrl}>Login</a>}
         <Header subtitle="Providing houses all over the world" />
         <Routes>

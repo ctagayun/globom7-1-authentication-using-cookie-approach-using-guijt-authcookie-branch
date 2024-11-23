@@ -65,6 +65,7 @@ namespace ConfArch.Web.Controllers
             return Redirect("/");
         }
 
+        //*This endpoints which also must have a valid session cookie returns a serialized claims
         [Authorize]
         public IActionResult GetUser()
         {

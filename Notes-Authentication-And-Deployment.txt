@@ -1,27 +1,27 @@
 Module 7: Authentication and Deployment
 
-  - Deployment React Project
-      - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/f2de7518-23c4-4576-8877-2169ea14ab86
-    
-      - first do a production build in React:
-            npm run buld --> creates "dist" folder
-    
-      - dist/index-Z8cH2rkp - contains all javscript files of entire application
+ 1. API and React Deployment
+    https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/f2de7518-23c4-4576-8877-2169ea14ab86
+   
+    - Deployment React Project
+      
+        - first do a production build in React:
+              npm run buld --> creates "dist" folder
+      
+        - dist/index-Z8cH2rkp - contains all javscript files of entire application
 
-    
+    - Deployment API
+      - do dotnet publish --> will create a Api/bin/Release. Contains many files,
+        take note of Api.dll, Api.exe, Api.pdb
 
-  - Deployment API
-     https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/f2de7518-23c4-4576-8877-2169ea14ab86
-    
-     - do dotnet publish --> will create a Api/bin/Release. Contains many files,
-       take note of Api.dll, Api.exe, Api.pdb
+      - the ap can be started from .bin\release\net8.0
+          -  cd .\bin\Release\net8.0\
+          - dotnet api.dll
+          - dotnet api.exe can also be used to start the app
 
-    - the ap can be started from .bin\release\net8.0
-        -  cd .\bin\Release\net8.0\
-        - dotnet api.dll
-        - dotnet api.exe can also be used to start the app
-
-  - Authentication
+      - automate production build --> open publish.ps1 --> higlight code to execute --> 
+        in the upper right corner of VSCode click Run or F8
+ 2. Authentication
      - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/413387b5-b1dd-4ffd-baa0-3ce06fb26081
 
   
@@ -73,3 +73,28 @@ Module 7: Authentication and Deployment
          - add builder.services.AddAuthentication  (See commnets in Step 1 and Step2)
 
      - Step3: create Api/AccountController - create 3 MVC endpoints for session mangement in a new account
+
+     - Step4: go to WebApplicationHouseExtensions and WebApplicationBidExtensions and put Authorize attribute
+     on all endpoints
+
+     - Step5: go back to Program.cs and declare "Policies" in  builder.Services.AddAuthorization(o => 
+
+     - Step6: add to program.cs app.UseAuthorization();   Call authorization middleware
+
+     - Next let's see what is needed in the React application  
+         - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/c2709893-6776-4589-bc6c-699eeb71d6a5/85458f50-80c4-4cf8-8469-76ae8123cf43
+
+         - to support cookie authentication in React application modify:
+           src/hooks/BidHooks and HouseHooks and instruxt Axios to send along the cookie 
+           with each Ajax call. But in order not to repeat each insturection on 
+           every endpoint:
+               
+               Step1: add "Axios.defaults.withCredntials" to src/main.tsx
+
+               Step2: add a new file src/hooks/UserHooks
+
+               Step3: go to src/main/App.tsx and call useFetchUser() hook;
+
+               Step4: go to src/house/houseList  and useFetchUser() hook here too
+                 Note: change the role of Roland to something than Admin. Publish the 
+                 React app and do the dotnet run again to see if Add button is displayed

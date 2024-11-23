@@ -4,7 +4,8 @@ using MiniValidation;
 
 public static class WebApplicationHouseExtensions
 {
-    public static void MapHouseEndpoints(this WebApplication app)
+   //*Put Authorize attribute on all our endpoints
+  public static void MapHouseEndpoints(this WebApplication app)
     {
         app.MapGet("/houses", [Authorize](IHouseRepository repo) => repo.GetAll())
             .Produces<HouseDto[]>(StatusCodes.Status200OK);
